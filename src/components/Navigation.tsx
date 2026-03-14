@@ -17,9 +17,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
   return (
     <motion.nav 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="fixed z-50 bottom-4 left-1/2 -translate-x-1/2 md:bottom-auto md:top-1/2 md:left-auto md:right-8 md:translate-x-0 md:-translate-y-1/2 flex flex-row md:flex-col gap-3 md:gap-4 bg-[#0a0515]/80 md:bg-transparent backdrop-blur-md md:backdrop-blur-none rounded-full md:rounded-none px-4 md:px-0 py-2 md:py-0 border border-white/10 md:border-0"
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      className="fixed z-50 top-1/2 right-8 -translate-y-1/2 flex flex-col gap-4"
     >
       {navItems.map(({ id, icon: Icon, label }) => (
         <button
@@ -29,20 +29,19 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           aria-label={label}
         >
           <div className={`
-            w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center
+            w-12 h-12 rounded-full flex items-center justify-center
             backdrop-blur-md border transition-all duration-300
             ${currentPage === id 
               ? 'bg-[#7864AC]/30 border-[#7864AC] shadow-[0_0_20px_rgba(120,100,172,0.4)]' 
               : 'bg-white/5 border-white/10 hover:border-[#7864AC]/50'
             }
           `}>
-            <Icon className={`w-4 h-4 md:w-5 md:h-5 transition-colors ${
+            <Icon className={`w-5 h-5 transition-colors ${
               currentPage === id ? 'text-[#7864AC]' : 'text-white/60 group-hover:text-[#7864AC]'
             }`} />
           </div>
           
           <span className="
-            hidden md:block
             absolute right-16 top-1/2 -translate-y-1/2 
             px-3 py-1.5 rounded-lg
             bg-[#7864AC] text-white text-sm
