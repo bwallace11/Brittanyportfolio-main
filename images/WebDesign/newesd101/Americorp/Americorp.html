@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmeriCorps Member Recruitment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+         /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 750px;
+            background-image:  url("image/AmericorpHero.jpg");
+            background-size:cover;
+            background-position:center;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0; 
+            z-index: 0;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;  
+            z-index: 1;
+        }
+
+        .hero-logo {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            z-index: 3;
+            background: white;
+            padding: 15px;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: #dc3545;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Share Section */
+        .share-section {
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 20px;
+            margin: 40px auto;
+            max-width: 1300px;
+        }
+
+        .share-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+        }
+		
+		.share-icon img{
+			width: 100%; 
+   			height: 100%;
+    		object-fit: contain;
+		}
+
+        .share-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .share-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: white;
+            color: #003366;
+            border: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 20px;
+            background: #f5f5f5;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            color: #003366;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .faq-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px;
+        }
+
+        .faq-question {
+            color: #003366;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* How It Works Section */
+        .how-section {
+            padding: 60px 20px;
+            background: #f9f9f9;
+        }
+
+        .how-section h2 {
+            text-align: center;
+            color: #003366;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .how-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 8%;
+            right: 8%;
+            height: 3px;
+            background: #7cb342;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-icon {
+            width: 50px;
+            height: 50px;
+            background: #7cb342;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 12px;
+
+        }
+		
+		.timeline-icon img{
+			width: 32px; 
+   			height: 32px;
+    		object-fit: contain;
+		}
+
+        .timeline-number {
+            width: 40px;
+            height: 40px;
+            background: #003366;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .timeline-desc {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Stories Section */
+        .stories-section {
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .stories-section h2 {
+            text-align: center;
+            color: #003366;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .stories-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .story-card {
+            background: #f5f5f5;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 300px;
+            background: #ddd;
+            
+        }
+		
+		.story-image img {
+			width: 100%;
+  			height: 100%;
+			object-fit: cover;
+		}
+
+        .story-content {
+            padding: 30px;
+        }
+
+        .quote-mark {
+            color: #7cb342;
+            font-size: 48px;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .story-text {
+            font-style: italic;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .story-author {
+            color: #003366;
+            font-weight: 600;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .benefits-section h2 {
+            text-align: center;
+            color: #003366;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .benefits-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .benefits-category {
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            color: #003366;
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .benefit-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .benefit-icon {
+            width: 50px;  
+			height: 50px;
+			background: #7cb342;
+			border-radius: 50%;
+			display: flex;
+   			align-items: center;
+    		justify-content: center;
+     		color: white;
+			padding: 12px;
+
+        }
+		
+		.benefit-icon img {
+			width: 100%; 
+   			height: 100%;
+    		object-fit: fill;
+		}
+
+        .benefit-title {
+            color: #003366;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .benefit-desc {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Positions Section */
+        .positions-section {
+            padding: 60px 20px;
+            background: #f9f9f9;
+			
+        }
+
+        .positions-section h2 {
+            text-align: center;
+            color: #003366;
+            font-size: 32px;
+            margin-bottom: 10px;
+			
+        }
+
+        .positions-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+			
+        }
+
+        .position-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+		    flex: 1 0 250px; 
+            border: 1px solid #ccc;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .position-icon {
+            width: 50px;  
+			height: 50px;
+			background: #7cb342;
+			border-radius: 50%;
+			display: flex;
+   			align-items: center;
+    		justify-content: center;
+     		color: white;
+			padding: 12px;
+        }
+		
+		.position-icon img {
+			width: 100%; 
+   			height: 100%;
+    		object-fit: contain;
+		}
+
+        .position-title {
+            color: #003366;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .position-org {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .position-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-apply {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+		
+		.btn-apply:hover {background-color:#bd212f}
+
+		.btn-apply:active {
+			 background-color: #3bd212f;
+             box-shadow: 0 5px #666;
+             transform: translateY(4px);
+		}
+
+        .btn-description {
+            background: white;
+            color: #003366;
+            border: 2px solid #003366;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+		.btn-description:hover {background-color:#003366;  color: #fff;}
+
+		.btn-description:active {
+			 background-color: #003366;
+			 color: #fff;
+             box-shadow: 0 5px #666;
+             transform: translateY(4px);
+		}
+		
+
+        /* About Section */
+        .about-section {
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .about-section h2 {
+            text-align: center;
+            color: #003366;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        .about-note {
+            font-style: italic;
+            color: #666;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+
+        .view-opportunities {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn-red {
+            background: #dc3545;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+        }
+		
+		.btn-red:hover {background-color:#bd212f}
+
+		.btn-red:active {
+			 background-color: #3bd212f;
+             box-shadow: 0 5px #666;
+             transform: translateY(4px);
+		}
+		
+        @media (max-width: 768px) {
+            .timeline {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .timeline::before {
+                display: none;
+            }
+
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .positions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+		.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+		
+		
+		
+		
+    </style>
+</head>
+<body>
+	
+   <section class="hero-section">
+        <div class="hero-logo">
+            <img src="image/Americorps_Stackedlogo_Navy-1024x704.png" alt="AmeriCorps Logo">
+        </div>
+        <div class="hero-content">
+            <h1>Serve Your Community</h1>
+            <p>Join AmeriCorps and make a lasting impact while gaining valuable experience</p>
+            <a href="#positions" class="hero-cta">Explore Opportunities</a>
+        </div>
+    </section>
+	
+    <!-- About AmeriCorps Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2>About AmeriCorps</h2>
+            <div class="about-content">
+                <p>AmeriCorps is a network of national-service programs that engages more than 80,000 members each year to meet education, public safety, health, human, and environmental needs. This may include mentoring youth, building affordable housing, assisting veterans and military families, providing health services, running after-school programs, helping communities respond to disasters, and much more. Members serve in thousands of non-profits, public agencies, and faith-based organizations each year. They receive a modest living allowance, and an education award at the end of their service to put toward secondary education costs.*</p>
+                
+                <p>The Spokane Service Team builds community through housing development and education. AmeriCorps State/National members serve as tutors in low-income schools, assistants in public housing or environmental agencies, or learn construction skills while building and maintaining low-income houses for individuals with disabilities in our community.</p>
+                
+                <p class="about-note">*Information provided by Washington Service Corps and Corporation for National and Community Service websites and fact sheets.</p>
+                
+                <div class="view-opportunities">
+                    <a href="https://my.americorps.gov/mp/listing/publicRequestSearch.do;jsessionid=4SV9QerQ-HjPOdss4M7k6UI_jhCTJCOwuChETc9fB4yi4PbgmdvX!-312934219" target="_blank" class="btn-red">View Service Opportunities →</a>
+                </div>
+                
+             
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- How It Works Section -->
+    <section class="how-section">
+        <div class="container">
+            <h2>How It Works</h2>
+            <p class="how-subtitle">Your journey from application to service completion</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon"><img src="image/apply.png" alt="Apply" /></div>
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-title">Apply</div>
+                    <div class="timeline-desc">Submit your application through the AmeriCorps portal</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><img src="image/interview.png" alt="Interview And Selection" /></div>
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-title">Interview &amp; Selection</div>
+                    <div class="timeline-desc">Meet with our team and learn about available positions</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><img src="image/serviceterms.png" alt="Service Term" /></div>
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-title">Service Term</div>
+                    <div class="timeline-desc">Serve 10-12 months making a difference in local schools</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><img src="image/completion.png" alt="Completion and Education Award" /></div>
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-title">Completion &amp; Education Award</div>
+                    <div class="timeline-desc">Earn your award and celebrate your accomplishments</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Stories Section -->
+    <section class="stories-section">
+        <div class="container">
+            <h2>Member Stories</h2>
+            <p class="stories-subtitle">Hear from former members about their AmeriCorps experience</p>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-image" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), #7cb342;"><img src="image/americorps-strong.png" alt="Member Story"/></div>
+                    <div class="story-content">
+                        <div class="quote-mark">"</div>
+                        <p class="story-text">AmeriCorps gave me real-world skills while helping local students succeed. The experience completely shaped my career path in education.</p>
+                        <p class="story-author">— Former Spokane Service Team Member</p>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <div class="story-image" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), #4db8a8;"><img src="image/AmeriStory.png" alt="Member Story"/></div>
+                    <div class="story-content">
+                        <div class="quote-mark">"</div>
+                        <p class="story-text">Serving with AmeriCorps allowed me to make a tangible difference in my community while developing leadership skills I use every day.</p>
+                        <p class="story-author">— Former Spokane Service Team Member</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2>Member Benefits &amp; Support</h2>
+            <p class="benefits-subtitle">AmeriCorps members receive comprehensive financial support and valuable benefits throughout their service term</p>
+            
+            <div class="benefits-category">
+                <h3 class="category-title">Financial Benefits</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><img src="image/allowance.png" alt="Living Allowance" /></div>
+                        <div class="benefit-title">Living Allowance</div>
+                        <div class="benefit-desc">$1,034.78 issued twice a month ($2,069.56 per month, before taxes)</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><img src="image/education.png" alt="Seagal Education Award" /></div>
+                        <div class="benefit-title">Segal Education Award</div>
+                        <div class="benefit-desc">Up to $7,395 for future schooling or to pay off existing qualified student loan debt (upon successful completion)</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><img src="image/pause.png" alt="Student Loan Forbearance" /></div>
+                        <div class="benefit-title">Student Loan Forbearance</div>
+                        <div class="benefit-desc">Temporarily postpone paying off qualified student loans during your service term</div>
+                    </div>
+				
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><img src="image/payment.png" alt="Interest Payment" /></div>
+                        <div class="benefit-title">Interest Payment</div>
+                        <div class="benefit-desc">Payment of interest on qualified student loans that accrued during service (paid after successful completion)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefits-category">
+                <h3 class="category-title">Health, Wellness &amp; Professional Support</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><img src="image/palm.png" alt="Health Insurance" /></div>
+                        <div class="benefit-title">Health Insurance</div>
+                        <div class="benefit-desc">Basic health insurance coverage (full-time service terms only)</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><img src="image/mentalhealth.png" alt="Mental Health Services" /></div>
+                        <div class="benefit-title">Mental Health Services</div>
+                        <div class="benefit-desc">Access to mental health services through the Member Assistance Program (MAP) and other support services</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><img src="image/baby.png" alt="Childcare Assistance" /></div>
+                        <div class="benefit-title">Childcare Assistance</div>
+                        <div class="benefit-desc">Financial assistance with childcare costs (full-time service terms only)</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><img src="image/food.png" alt="Food Assistance" /></div>
+                        <div class="benefit-title">Food Assistance</div>
+                        <div class="benefit-desc">Members may qualify for monthly food assistance through the Department of Social and Health Services (DSHS)</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><img src="image/skill.png" alt="Professional Development" /></div>
+                        <div class="benefit-title">Professional Development</div>
+                        <div class="benefit-desc">Comprehensive professional development training to build valuable career skills</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><img src="image/workercomp.png" alt="Workers Compensation"/></div>
+                        <div class="benefit-title">Workers Compensation</div>
+                        <div class="benefit-desc">Full workers compensation coverage throughout your service term</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Open Positions Section -->
+    <section class="positions-section">
+        <div class="container">
+            <h2>Current Open Positions</h2>
+            <p class="positions-subtitle">Choose from diverse service opportunities across Northeast Washington</p>
+            <div class="positions-grid">
+                <div class="position-card">
+                    <div class="position-icon"><img src="image/palm.png" alt="Environmental educator" /></div>
+                    <h3 class="position-title">Environmental Educator</h3>
+                    <p class="position-org">West Valley Outdoor Learning Center</p>
+                    <div class="position-buttons">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScQZ-C-xQ0gnHNpDaLf-9xu2-BKBOXD0CN7C-FigU-VBcNJpQ/viewform" target="_blank" class="btn-apply">Apply Now →</a>
+                        <a href="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_520831/File/WVOLC_Environmental%20Educator_Position_Description.pdf" target="_blank" class="btn-description">Position Description</a>
+                    </div>
+                </div>
+                <div class="position-card">
+                    <div class="position-icon"><img src="image/baby-diaper.png" alt="Diaper Bank" /></div>
+                    <h3 class="position-title">Diaper Bank Coordinator</h3>
+                    <p class="position-org">MLK Jr. Community Center</p>
+                    <div class="position-buttons">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScS16TXF6g3ruGEkJ_qY4cUKWzDLosAOyd_XUgsz_ZY01s8Iw/viewform" target="_blank" class="btn-apply">Apply Now →</a>
+                        <a href="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_520831/File/MLK_Diaper%20Bank%20Coordinator_Position_Description.pdf" target="_blank" class="btn-description">Position Description</a>
+                    </div>
+                </div>
+                <div class="position-card">
+                    <div class="position-icon"><img src="image/home-icon-silhouette.png" alt="Diaper Bank" /></div>
+                    <h3 class="position-title">Transitions Property &amp; Program Support</h3>
+                    <p class="position-org">Transitions</p>
+                    <div class="position-buttons">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdH31oW6nM49sip2ss3gORvfPVpOrbf8Yc9RH2eVaNHs0uOnw/viewform" target="_blank" class="btn-apply">Apply Now →</a>
+                        <a href="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_520831/File/Transitions_Property_Program_Support_Position_Description_Accessible.pdf" target="_blank" class="btn-description">Position Description</a>
+                    </div>
+                </div>
+                <div class="position-card">
+                    <div class="position-icon"><img src="image/earth-globe-with-continents-maps.png" alt="Diaper Bank" /></div>
+                    <h3 class="position-title">Resource Support Specialist</h3>
+                    <p class="position-org">Thrive International</p>
+                    <div class="position-buttons">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfGjfznM5vbDawxDfvEs76AGre-sTPC-k1L3YZwMZaWtqqWQQ/viewform" target="_blank" class="btn-apply">Apply Now →</a>
+                        <a href="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_520831/File/Resource_Support_Specialist_Thrive%20Intl_Position_Description_Accessible.pdf" target="_blank" class="btn-description">Position Description</a>
+                    </div>
+                </div>
+                <div class="position-card">
+                    <div class="position-icon"><img src="image/hammer.png" alt="Construction Crew Memeber"/>
+					</div>
+                    <h3 class="position-title">Construction Crew Member</h3>
+                    <p class="position-org">Habitat for Humanity</p>
+                    <div class="position-buttons">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScewo7fu1vni1ne2j7DRnfCUcetwWpqYAkDR_Ez5gNGW_5-9A/viewform" target="_blank" class="btn-apply">Apply Now →</a>
+                        <a href="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_520831/File/Habitat_Construction_Crew_Position_Description_Accessible.pdf" target="_blank" class="btn-description">Position Description</a>
+                    </div>
+                </div>
+                <div class="position-card">
+                    <div class="position-icon"><img src="image/line-chart.png" alt="Diaper Bank" /></div>
+                    <h3 class="position-title">Construction Project Support Assistant</h3>
+                    <p class="position-org">Habitat for Humanity</p>
+                    <div class="position-buttons">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScewo7fu1vni1ne2j7DRnfCUcetwWpqYAkDR_Ez5gNGW_5-9A/viewform" target="_blank" class="btn-apply">Apply Now →</a>
+                        <a href="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_520831/File/Habitat_Construction_Project_Support_Position_Description_Accessible.pdf" target="_blank" class="btn-description">Position Description</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	
+	
+	
+	
+<!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+           
+			
+			<button class="accordion">Who can apply?</button>
+				<div class="panel">
+  					<p>Minimum age varies by role. Some positions require 17 plus, others 21 plus. See each position description and apply through the linked form.</p>
+				</div>
+
+			<button class="accordion">What are the requirements?</button>
+				<div class="panel">
+  					<p>Requirements differ by host site. Common items include background check, availability for the full term, and reliable transportation.</p>
+				</div>
+
+				<button class="accordion">What is the living allowance?</button>
+					<div class="panel">
+						 <p>$1,034.78 issued twice a month ($2,069.56 per month, before taxes). See benefits above for details.</p>
+					</div>
+
+				<button class="accordion">Where do members serve?</button>
+						<div class="panel">
+							 <p>Across Northeast Washington at schools and community agencies. See Current Open Positions for active opportunities.</p>
+						</div>
+						<div style="text-align: center; margin-top: 40px; padding: 30px; background: #f5f5f5; border-radius: 12px;">
+							<p style="margin-bottom: 15px;"><strong>Interested in learning more about AmeriCorps or Spokane Service Team?</strong></p>
+							<p style="margin-bottom: 15px;">Please email Allyson Fritz, AmeriCorps Coordinator at <a href="mailto:afritz@esd101.net" style="color: #003366; font-weight: 600;">afritz@esd101.net</a></p>
+							<p>Like and follow us on <a href="https://www.facebook.com/SpokaneServiceTeamWA/" target="_blank" style="color: #003366; font-weight: 600;">Facebook</a></p>
+						</div>
+        </div>
+    </section>
+	
+    <!-- Share Section -->
+    <section class="share-section">
+        <svg class="share-icon" viewBox="0 0 24 24" fill="white">
+            <circle cx="18" cy="5" r="3"/>
+            <circle cx="6" cy="12" r="3"/>
+            <circle cx="18" cy="19" r="3"/>
+            <line x1="8.5" y1="13.5" x2="15.5" y2="17.5" stroke="white" stroke-width="2"/>
+            <line x1="8.5" y1="10.5" x2="15.5" y2="6.5" stroke="white" stroke-width="2"/>
+        </svg>
+        <h2>Know someone who might be interested?</h2>
+        <p>Help us spread the word! Print or share our Member Recruitment Flyer with friends, family, or anyone looking to make a difference in their community.</p>
+        <div class="button-group">
+            <a href="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_520831/File/AmeriCorps%20Member%20Recruitment%20Flyer_25-26.pdf" target="_blank" class="btn btn-primary" style="text-decoration: none;"><img src="image/download.png" alt="Download Flyer" style="width:22px;height:22px;"/> Download Flyer (PDF)</a>
+            <button class="btn btn-secondary" onclick="window.open('https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_520831/File/AmeriCorps%20Member%20Recruitment%20Flyer_25-26.pdf'); window.print();"><img src="image/print.png" alt="Print" style="width:22px;height:22px;"/>Print Flyer</button>
+        </div>
+    </section>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
+</html>

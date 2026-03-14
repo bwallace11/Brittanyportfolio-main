@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher of the Year - NEWESD 101</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #1e3a5f;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: #1e3a5f;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #4a7c9e 0%, #2d5570 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero .quote {
+            font-style: italic;
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .current-winner {
+            background: #e8f4f8;
+            padding: 50px 0;
+        }
+
+        .winner-card {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .winner-card h2 {
+            color: #1e3a5f;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .winner-image-container {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto 25px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 3px solid #4ecdc4;
+        }
+
+        .winner-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .winner-card h3 {
+            color: #1e3a5f;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .winner-card p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .winner-card a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #4ecdc4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .winner-card a:hover {
+            background: #3db8af;
+            transform: translateY(-2px);
+        }
+
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            font-size: 32px;
+            color: #1e3a5f;
+            margin-bottom: 40px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .info-card h2 {
+            color: #1e3a5f;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4ecdc4;
+        }
+
+        .info-card h3 {
+            color: #1e3a5f;
+            font-size: 20px;
+            margin: 20px 0 10px 0;
+        }
+
+        .criteria-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .criteria-list li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .criteria-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .responsibilities-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .responsibilities-list li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .responsibilities-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .winners-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #1e3a5f;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .winners-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .winners-column {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .winners-column h3 {
+            color: #1e3a5f;
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4ecdc4;
+        }
+
+        .winners-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .winners-column li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .winners-column li:last-child {
+            border-bottom: none;
+        }
+
+        .highlight {
+            color: #4ecdc4;
+            font-weight: 600;
+        }
+
+        .contact-box {
+            background: #e8f4f8;
+            border-left: 4px solid #4ecdc4;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .contact-box h3 {
+            color: #1e3a5f;
+            margin-bottom: 10px;
+        }
+
+        .contact-box a {
+            color: #4ecdc4;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .gallery-item {
+            width: 100%;
+            padding: 10px;
+            background: #e8f4f8;
+            border-radius: 8px;
+            border: 2px solid #4ecdc4;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        footer {
+            background: #1e3a5f;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 968px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .quote {
+                font-size: 16px;
+            }
+
+            .winners-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header,
+            .section-title {
+                font-size: 28px;
+            }
+
+            .winner-card h2 {
+                font-size: 28px;
+            }
+
+            .content-section {
+                padding: 40px 0;
+            }
+
+            .winners-section {
+                padding: 40px 0;
+            }
+
+            .current-winner {
+                padding: 40px 0;
+            }
+
+            .breadcrumb {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .winner-card {
+                padding: 25px;
+            }
+
+            .winner-card h2 {
+                font-size: 22px;
+            }
+
+            .winner-card h3 {
+                font-size: 22px;
+            }
+
+            .info-card {
+                padding: 20px;
+            }
+
+            .winners-column {
+                padding: 20px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">NEWESD 101</div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="/">NEWESD 101</a> » 
+            <a href="/services">Support Services</a> » 
+            <a href="/services/recognizing_excellence">Recognizing Excellence</a> » 
+            Teacher of the Year
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Teacher of the Year</h1>
+            <p class="quote">"A teacher affects eternity; he can never tell where his influence stops." — Henry Brooks Adams</p>
+        </div>
+    </section>
+
+    <section class="current-winner">
+        <div class="container">
+            <div class="winner-card">
+                <h2>2026 NEWESD 101 Regional Teacher of the Year</h2>
+                
+                <div class="winner-image-container">
+                    <img src="https://storage.mlcdn.com/account_image/671787/x0DK0Um5ZZSXjzkSGl6xk29iIlL3QZDNw8p5FMbb.jpg" alt="Portrait of Destiny Hornstein, 2026 Regional Teacher of the Year from Otis Orchards Elementary in East Valley School District">
+                </div>
+                
+                <h3>Destiny Hornstein</h3>
+                <p><em>Otis Orchards Elementary</em></p>
+                <p>East Valley School District</p>
+                <a href="https://subscribepage.io/d5Vs41">Learn more about Destiny's journey</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-header">Selection Process and Criteria</h2>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h2>How is the Teacher of the Year Selected?</h2>
+                    <p>Washington's educational service districts each select a Regional Teacher of the Year. The state selection committee then chooses one of these Regional Teachers as the Washington State Teacher of the Year.</p>
+                    
+                    <h3>Selection Committee Evaluation</h3>
+                    <p>The committee uses the written application, interviews, and a mock keynote presentation to identify the candidate who best exemplifies the following criteria:</p>
+                    
+                    <ul class="criteria-list">
+                        <li>The teacher has the respect and admiration of their colleagues</li>
+                        <li>The teacher is an expert in their field who guides students of all backgrounds and abilities to achieve excellence</li>
+                        <li>The teacher collaborates with colleagues, students, and families to create a school culture of respect and success</li>
+                        <li>The teacher deliberately connects the classroom and key stakeholders to foster a strong community at large</li>
+                        <li>The teacher demonstrates leadership and innovation in and outside of the classroom walls that embodies lifelong learning</li>
+                        <li>The teacher expresses themselves in an engaging and articulate way</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h2>What Do the Award Winners Do?</h2>
+                    
+                    <h3>Regional Teacher of the Year Responsibilities</h3>
+                    <ul class="responsibilities-list">
+                        <li>Attend a long weekend (Friday-Monday) of interviews, leadership retreat, and awards ceremony</li>
+                        <li>Complete a collection of teacher tales to be shared with legislators, educational leaders, and other stakeholders</li>
+                        <li>Travel the state and their regions to share their expertise with community groups, businesses, government officials, and future teachers</li>
+                        <li>Identify and advocate for educational issues of particular interest to them</li>
+                        <li>Receive small cash awards and additional prizes in recognition of their achievements</li>
+                    </ul>
+
+                    <h3>State Teacher of the Year Responsibilities</h3>
+                    <ul class="responsibilities-list">
+                        <li>Represent the state at all required National Teacher of the Year events including several national leadership conferences and the national recognition week in Washington, D.C.</li>
+                        <li>Serve as the Teacher-in-Residence for Washington's Teacher of the Year program January - June</li>
+                        <li>Respond to and fulfill Teacher of the Year speaking requests and presentations</li>
+                        <li>Sit on the Washington Teacher Advisory Council (WATAC) leadership team and help plan the spring convening</li>
+                        <li>Identify and take on at least one statewide initiative and carry out activities to support it</li>
+                        <li>Design and carry out a personal communication plan including social media, web presence, traditional media strategy, and other publications</li>
+                        <li>Network with teacher preparation programs across the state</li>
+                    </ul>
+
+                    <div class="contact-box">
+                        <h3>Teacher of the Year Coordinator</h3>
+                        <p><strong>Mary Kempel</strong></p>
+                        <p>Phone: (509) 456-2715</p>
+                        <p>Email: <a href="mailto:mkempel@esd101.net">mkempel@esd101.net</a></p>
+                    </div>
+
+                    <h3>Additional Resources</h3>
+                    <p><a href="http://www.k12.wa.us/EducationAwards/TOY/default.aspx" style="color: #4ecdc4; text-decoration: none; font-weight: 600;">OSPI Teacher of the Year Information</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="winners-section">
+        <div class="container">
+            <h2 class="section-title">Past Recipients</h2>
+
+            <div class="winners-columns">
+                <div class="winners-column">
+                    <h3>Regional Teacher of the Year Winners</h3>
+                    <ul>
+                        <li>2023 — Gina Behrens, West Valley</li>
+                        <li>2022 — Rebecca Adderson, Pullman</li>
+                        <li>2021 — Devin Bauer, Nine Mile Falls</li>
+                        <li>2020 — Analisa McCann, Central Valley</li>
+                        <li>2019 — Susan Douglas, Almira</li>
+                        <li>2018 — <span class="highlight">Mandy Manning, Spokane</span></li>
+                        <li>2017 — Tim Larson, Odessa</li>
+                        <li>2016 — Alecia McAdams-Sing, Nine Mile Falls</li>
+                        <li>2015 — Linda Carney, Spokane</li>
+                        <li>2014 — Jeffrey Dunn, Deer Park</li>
+                        <li>2013 — Monte Syrie, Cheney</li>
+                        <li>2012 — John Hagney, Spokane</li>
+                        <li>2011 — Jeff Wehr, Odessa</li>
+                        <li>2010 — Jim Loucks, West Valley</li>
+                        <li>2009 — Dave Gamon, Mead</li>
+                        <li>2008 — Tammy Mendoza, Tekoa</li>
+                        <li>2007 — Mike Anderson, St John-Endicott</li>
+                        <li>2006 — Karen Azzinnaro, Cheney</li>
+                        <li>2005 — Kathi Tribby-Moore, NEWESD 101</li>
+                        <li>2004 — <span class="highlight">Dennis Griner, Palouse</span></li>
+                        <li>2003 — Cheryl Johnson, West Valley</li>
+                        <li>2002 — Don Baribault, Northport</li>
+                        <li>2001 — Judith Lancefield, Pullman</li>
+                        <li>2000 — <span class="highlight">Marv Sather, Riverside</span></li>
+                        <li>1999 — Steve Bernard, Central Valley</li>
+                        <li>1998 — Janelle Campasino, Riverside</li>
+                        <li>1997 — Dave Quistad, Colville</li>
+                    </ul>
+                </div>
+
+                <div class="winners-column">
+                    <h3>Washington State Teacher of the Year from NEWESD 101</h3>
+                    <ul>
+                        <li>2018 — <span class="highlight">Mandy Manning, Spokane</span></li>
+                        <li>2004 — Dennis Griner, Palouse</li>
+                        <li>2000 — Marv Sather, Riverside</li>
+                        <li>1985 — Gary Johnson, Pullman</li>
+                        <li>1980 — Shelia Bell, Central Valley</li>
+                        <li>1971 — Anthony Antonucci, Spokane</li>
+                        <li>1966 — Martha Jones, Pullman</li>
+                        <li>1965 — Anne Stilson, Oakesdale</li>
+                    </ul>
+
+                    <h3 style="margin-top: 40px;">National Teacher of the Year from NEWESD 101</h3>
+                    <ul>
+                        <li><span class="highlight">2018 — Mandy Manning, Spokane</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_520831/Image/Teacher%20of%20the%20Year/Teacher4%20small.jpg" alt="Teacher working with two students on a writing assignment at a desk">
+                </div>
+                <div class="gallery-item">
+                    <img src="http://beta.esd101.net/UserFiles/Servers/Server_520831/Image/Teacher%20of%20the%20Year/Teacher5small.jpg" alt="Music teacher conducting students during a classroom performance">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_520831/Image/Teacher%20of%20the%20Year/Teacher1small.jpg" alt="Teacher reading a book with two attentive students">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>NorthEast Washington ESD 101</strong></p>
+            <p>4202 S Regal St, Spokane, WA 99223</p>
+            <p>Phone: 509-789-3800 | Fax: 509-323-2765</p>
+        </div>
+    </footer>
+</body>
+</html>

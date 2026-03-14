@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superintendent and School Board Services - NEWESD 101</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #1e3a5f;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .breadcrumb a {
+            color: #1e3a5f;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #4a7c9e 0%, #2d5570 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero .quote {
+            font-style: italic;
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .service-main {
+            background: white;
+        }
+
+        .service-sidebar {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .service-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .service-card h2 {
+            color: #1e3a5f;
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4ecdc4;
+        }
+
+        .service-card h3 {
+            color: #1e3a5f;
+            font-size: 22px;
+            margin: 25px 0 15px 0;
+        }
+
+        .service-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-list li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .service-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .contact-box {
+            background: #e8f4f8;
+            border-left: 4px solid #4ecdc4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .contact-box h3 {
+            color: #1e3a5f;
+            margin-bottom: 10px;
+        }
+
+        .contact-box p {
+            margin: 5px 0;
+        }
+
+        .contact-box a {
+            color: #4ecdc4;
+            text-decoration: none;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        .resource-links {
+            margin-top: 20px;
+        }
+
+        .resource-links h3 {
+            color: #1e3a5f;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .resource-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-links li {
+            padding: 8px 0;
+        }
+
+        .resource-links a {
+            color: #4ecdc4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .resource-links a:hover {
+            color: #3db8af;
+            text-decoration: underline;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #4ecdc4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            margin: 10px 10px 10px 0;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #3db8af;
+            transform: translateY(-2px);
+        }
+
+        .process-steps {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .process-steps ol {
+            padding-left: 20px;
+        }
+
+        .process-steps li {
+            margin: 15px 0;
+            padding-left: 10px;
+        }
+
+        footer {
+            background: #1e3a5f;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 968px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">NEWESD 101</div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="/">NEWESD 101</a> » 
+            <a href="/services">Support Services</a> » 
+            <a href="/services/administrative">Administrative Services</a> » 
+            Superintendent and School Board Services
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Superintendent and School Board Services</h1>
+            <p class="quote">"The greatness of a man is not how much wealth he acquires, but in his integrity and his ability to affect those around him positively." — Bob Marley</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-main">
+                    <div class="service-card">
+                        <h2>Superintendent and Principal Search Services</h2>
+                        <p>NEWESD 101 is available to assist school districts with superintendent and principal searches. In collaboration with the district superintendent and school board, our team will provide comprehensive support throughout the hiring process.</p>
+
+                        <h3>Services Provided</h3>
+                        <ul class="service-list">
+                            <li>Position brochure development</li>
+                            <li>Custom application form creation</li>
+                            <li>Advertising on the NEWESD website</li>
+                            <li>Review of candidate applications</li>
+                            <li>Interview schedule coordination</li>
+                            <li>Participation in the interview process</li>
+                            <li>Correspondence with candidates</li>
+                        </ul>
+
+                        <h3>Sample Resources</h3>
+                        <a href="/UserFiles/Servers/Server_520831/File/Superintendent and School Board/Fillable application.pdf" class="download-btn">Download sample application form (PDF)</a>
+                        <a href="/UserFiles/Servers/Server_520831/File/Superintendent and School Board/Colton Draft Sup Hiring Flyer.pdf" class="download-btn">View sample position brochure (PDF)</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>New Superintendent Orientation</h2>
+                        <p>NEWESD will invite new superintendents to our offices or travel to your district to review the critical elements of district superintendency. Our comprehensive orientation covers essential topics including:</p>
+
+                        <ul class="service-list">
+                            <li>Overview of regional meetings and associations (NEWASA, sub-regional superintendent meetings)</li>
+                            <li>State meetings and conferences relevant to your role</li>
+                            <li>General items of importance for new superintendents</li>
+                            <li>Required forms and documentation</li>
+                            <li>District compliance requirements</li>
+                        </ul>
+
+                        <h3>New Superintendent Resources</h3>
+                        <a href="/UserFiles/Servers/Server_520831/File/Superintendent and School Board/2018 Supt Forms.pdf" class="download-btn">Download required forms (PDF)</a>
+                        <a href="/UserFiles/Servers/Server_520831/File/Superintendent and School Board/2018 General Items of Interest.pdf" class="download-btn">View general guidelines (PDF)</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Strategic Planning Facilitation</h2>
+                        <p>NEWESD provides expert facilitation for district strategic planning processes. Our structured approach typically takes approximately 6 months and ensures meaningful community engagement and actionable outcomes.</p>
+
+                        <h3>Strategic Planning Process</h3>
+                        <div class="process-steps">
+                            <ol>
+                                <li><strong>Committee Formation:</strong> Assemble a planning committee including the superintendent, board members, representative staff, and community members. All meetings with three or more board members must be advertised as Board Strategic Plan work sessions.</li>
+                                
+                                <li><strong>Mission Review:</strong> Begin with your district's mission statement and bring meaning and direction to that mission through strategic planning.</li>
+                                
+                                <li><strong>Identify Core Tenets:</strong> In the first meeting, discuss what the mission means and reach agreement on 2-4 basic tenets to include in your strategic plan. No more than four tenets should be selected to maintain focus.</li>
+                                
+                                <li><strong>Develop Each Tenet:</strong> One tenet per meeting, describe how it will be implemented and identify supporting action items. This phase typically requires 3-4 meetings depending on the number of tenets.</li>
+                                
+                                <li><strong>Draft Review:</strong> Create a draft plan to share with staff and community for input, questions, and feedback.</li>
+                                
+                                <li><strong>Finalization:</strong> Hold a final planning group meeting to review feedback, followed by board adoption at a subsequent meeting.</li>
+                            </ol>
+                        </div>
+
+                        <p><strong>Note:</strong> This planning process requires commitment from all participants. It is most productive when members attend all meetings rather than coming and going throughout the process.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Legislative Resources</h2>
+                        <p>Stay informed about current legislation and policy affecting education in Washington State.</p>
+
+                        <div class="resource-links">
+                            <ul>
+                                <li><a href="http://wasa-oly.org/wasa/WASA/4_0_Government_Relations/This_Week_in_Olympia_-_TWIO/TWIO.aspx">This Week in Olympia (TWIO)</a> — Weekly legislative updates</li>
+                                <li><a href="http://app.leg.wa.gov/rosters/">Legislative Contact Information</a> — Emails, committees, and legislative assistants</li>
+                                <li><a href="http://www.pdc.wa.gov">Public Disclosure Commission (PDC)</a> — Campaign finance and lobbying information</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-sidebar">
+                    <div class="contact-box">
+                        <h3>Contact Information</h3>
+                        <p><strong>Rob Roettger</strong></p>
+                        <p>Superintendent</p>
+                        <p><a href="mailto:rroettger@esd101.net">rroettger@esd101.net</a></p>
+                        <p>Phone: 509-789-3500</p>
+                    </div>
+
+                    <div class="resource-links">
+                        <h3>Additional Resources</h3>
+                        <ul>
+                            <li><a href="http://wasa-oly.org/wasa/WASA/WASA_Services/Career_Connection/WASA/CareerConnections/Career_Connection_Instructions.aspx">WASA Position Openings</a></li>
+                            <li><a href="http://www.k12.wa.us">Office of Superintendent of Public Instruction</a></li>
+                            <li><a href="http://www.leg.wa.gov">Washington State Legislature</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>NorthEast Washington ESD 101</strong></p>
+            <p>4202 S Regal St, Spokane, WA 99223</p>
+            <p>Phone: 509-789-3800 | Fax: 509-323-2765</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School and Community Resources - NEWESD 101</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #1e3a5f;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: #1e3a5f;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #4a7c9e 0%, #2d5570 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #1e3a5f;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #4ecdc4;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .resource-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .resource-card h3 {
+            color: #1e3a5f;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .resource-card p {
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+
+        .resource-card a {
+            color: #4ecdc4;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            word-break: break-word;
+        }
+
+        .resource-card a:hover {
+            color: #3db8af;
+            text-decoration: underline;
+        }
+
+        .news-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .news-card h3 {
+            color: #1e3a5f;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .news-image-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 15px;
+            background: #e8f4f8;
+            border-radius: 8px;
+            border: 2px solid #4ecdc4;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .alert-box {
+            background: #e8f4f8;
+            border-left: 4px solid #4ecdc4;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .alert-box h3 {
+            color: #1e3a5f;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #1e3a5f;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+                padding: 0 10px;
+            }
+
+            .hero p {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section {
+                padding: 40px 0;
+            }
+
+            .news-section {
+                padding: 40px 0;
+            }
+
+            .news-card {
+                padding: 20px;
+            }
+
+            .news-card h3 {
+                font-size: 20px;
+            }
+
+            .breadcrumb {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .news-image-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">NEWESD 101</div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="/">NEWESD 101</a> » 
+            <a href="/learning">Learning Services</a> » 
+            <a href="/learning/jdss">Juvenile Detention School Services</a> » 
+            School and Community Resources
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <h1>School and Community Resources</h1>
+            <p>Supporting students and families through challenging times</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">COVID-19 Resources</h2>
+            
+            <div class="alert-box">
+                <h3>Public Health Information</h3>
+                <p>Access current information and resources related to public health and safety in our community.</p>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>NEWESD Public Health</h3>
+                    <p>Comprehensive health resources and guidelines for schools and families.</p>
+                    <a href="https://www.esd101.net/public_health">Visit Public Health page</a>
+                </div>
+
+                <div class="resource-card">
+                    <h3>Spokane COVID-19 Information</h3>
+                    <p>Current local information and resources from Greater Spokane Incorporated.</p>
+                    <a href="https://greaterspokane.org/COVID-19/">Access local resources</a>
+                </div>
+
+                <div class="resource-card">
+                    <h3>Thriving Schools Resources</h3>
+                    <p>Kaiser Permanente's resources for schools and families impacted by COVID-19.</p>
+                    <a href="https://thrivingschools.kaiserpermanente.org/">Explore resources</a>
+                </div>
+
+                <div class="resource-card">
+                    <h3>EPA Healthy Schools</h3>
+                    <p>Environmental Protection Agency resources for healthy school environments.</p>
+                    <a href="https://www.epa.gov/children/healthy-schools-news-pacific-northwest">Learn about healthy schools</a>
+                </div>
+            </div>
+
+            <h3 style="color: #1e3a5f; margin-top: 40px; margin-bottom: 20px; font-size: 24px;">Financial Wellness Resources</h3>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>Budgeting in Uncertain Times</h3>
+                    <p>Practical guidance for managing finances during challenging circumstances.</p>
+                    <a href="/UserFiles/Servers/Server_520831/File/Student Learning and Support/Budgeting in Uncertain Times - EAPNOW.pdf">Download budgeting guide (PDF)</a>
+                </div>
+
+                <div class="resource-card">
+                    <h3>Help During Challenging Times</h3>
+                    <p>Support resources from Employee Assistance Programs.</p>
+                    <a href="/UserFiles/Servers/Server_520831/File/Student Learning and Support/Help During Challenging Times - EAPNOW.pdf">Download support guide (PDF)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">JDC News & Updates</h2>
+
+            <div class="news-card">
+                <h3>PBS Special Features NEWESD Staff</h3>
+                
+                <div class="news-image-container">
+                    <img src="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_520831/Image/Center%20for%20Juvenile%20Detention/Tavis_Smiley.jpg" alt="Tavis Smiley Reports program image featuring investigation into juvenile justice system">
+                </div>
+                
+                <p>Tavis Smiley Reports, a PBS investigative program, visited Spokane for a prime time special examining the American juvenile justice system.</p>
+                
+                <p>The program, <em>Education Under Arrest</em>, included interviews with NEWESD 101 staff members providing educational services in the Spokane County Juvenile Detention Center (JDC) School and Structured Alternative Confinement (SAC) School.</p>
+                
+                <p>Incarcerated local students also were interviewed for the program, an examination of what is working on the frontlines of reform in juvenile justice.</p>
+                
+                <p>Host Tavis Smiley took his cameras to four states to examine the economic, social and emotional cost of zero tolerance policies that are placing more and more youth into the criminal justice system.</p>
+                
+                <p>The JDC and SAC schools are two of the three educational programs NEWESD 101 operates for juvenile offenders in Spokane County. The third is the Martin Hall Detention Center.</p>
+                
+                <p>The JDC and Martin Hall are maximum security juvenile detention centers, while the SAC School serves youth placed on electronic monitoring and those court ordered to an alternative school setting.</p>
+            </div>
+
+            <div class="news-card">
+                <h3>101 in 101: Kathi Tribby-Moore</h3>
+                <p>Learn about the dedicated staff members providing essential educational services through the Center for Juvenile Detention School Services.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>NorthEast Washington ESD 101</strong></p>
+            <p>4202 S Regal St, Spokane, WA 99223</p>
+            <p>Phone: 509-789-3800 | Fax: 509-323-2765</p>
+        </div>
+    </footer>
+</body>
+</html>
